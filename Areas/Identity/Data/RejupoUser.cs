@@ -16,5 +16,8 @@ namespace Rejupo.Areas.Identity.Data
         public string LastName { get; set; }
         [Required, Display(Name = "Odział")]
         public string  Division { get; set; }
+
+        [Display(Name = "Numer telefonu")]
+        public override string PhoneNumber {get; set;}
     }
 }
