@@ -25,6 +25,8 @@ namespace Rejupo.Pages_Admin_Divisions
 
         [BindProperty]
         public Division Division { get; set; }
+        [BindProperty]
+        public string Message { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -32,11 +34,21 @@ namespace Rejupo.Pages_Admin_Divisions
             {
                 return Page();
             }
+            
+            if(_context.Divisions.Find(Division.Id) == null)
+            {
+                _context.Divisions.Add(Division);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                Message = "Podany numer już istnieje!";
+                return Page();
+            }
 
-            _context.Divisions.Add(Division);
-            await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            
         }
     }
 }
