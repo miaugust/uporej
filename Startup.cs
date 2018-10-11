@@ -27,6 +27,7 @@ namespace Rejupo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")));
+            //services.AddDbContext<FakeDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("AppDbContextConnection")));
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

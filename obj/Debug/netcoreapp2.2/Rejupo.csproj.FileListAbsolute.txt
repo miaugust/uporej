@@ -63,3 +63,8 @@ C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Areas\
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Divisions\Create.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Divisions\Delete.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Divisions\Details.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Divisions\Edit.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Divisions\Index.g.cshtml.cs
