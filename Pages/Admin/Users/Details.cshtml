@@ -1,0 +1,121 @@
+@page
+@model Rejupo.Pages_Admin_Users.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RejupoUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.Division)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.Division)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.NormalizedUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.NormalizedUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.NormalizedEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.NormalizedEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.EmailConfirmed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.EmailConfirmed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.PasswordHash)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.PasswordHash)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.SecurityStamp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.SecurityStamp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.ConcurrencyStamp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.ConcurrencyStamp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.PhoneNumberConfirmed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.PhoneNumberConfirmed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.TwoFactorEnabled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.TwoFactorEnabled)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.LockoutEnd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.LockoutEnd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.LockoutEnabled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.LockoutEnabled)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.AccessFailedCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.AccessFailedCount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.RejupoUser.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

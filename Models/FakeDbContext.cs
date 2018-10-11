@@ -25,5 +25,6 @@ namespace Rejupo.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<Division> Divisions { get; set; }
+        public DbSet<Rejupo.Areas.Identity.Data.RejupoUser> RejupoUser { get; set; }
     }
 }
