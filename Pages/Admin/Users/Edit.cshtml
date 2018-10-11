@@ -5,92 +5,80 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Autoryzacja</h2>
 
-<h4>RejupoUser</h4>
+<h4>Użytkownik</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
+        
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.FirstName" class="control-label"></label>
-                <input asp-for="RejupoUser.FirstName" class="form-control" />
-                <span asp-validation-for="RejupoUser.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.LastName" class="control-label"></label>
-                <input asp-for="RejupoUser.LastName" class="form-control" />
-                <span asp-validation-for="RejupoUser.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.Division" class="control-label"></label>
-                <input asp-for="RejupoUser.Division" class="form-control" />
-                <span asp-validation-for="RejupoUser.Division" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="RejupoUser.Id" />
-            <div class="form-group">
-                <label asp-for="RejupoUser.UserName" class="control-label"></label>
-                <input asp-for="RejupoUser.UserName" class="form-control" />
-                <span asp-validation-for="RejupoUser.UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.NormalizedUserName" class="control-label"></label>
-                <input asp-for="RejupoUser.NormalizedUserName" class="form-control" />
-                <span asp-validation-for="RejupoUser.NormalizedUserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.Email" class="control-label"></label>
-                <input asp-for="RejupoUser.Email" class="form-control" />
-                <span asp-validation-for="RejupoUser.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.NormalizedEmail" class="control-label"></label>
-                <input asp-for="RejupoUser.NormalizedEmail" class="form-control" />
-                <span asp-validation-for="RejupoUser.NormalizedEmail" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="RejupoUserID" />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.RejupoUser.FirstName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RejupoUser.FirstName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RejupoUser.LastName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RejupoUser.LastName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RejupoUser.Division)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RejupoUser.Division)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RejupoUser.Email)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RejupoUser.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RejupoUser.PhoneNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RejupoUser.PhoneNumber)
+                </dd>
+
+            </dl>
+            <br/>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Input.IsSuperAdmin)
+                </dt>
+                <dd>
+                    @Html.CheckBoxFor(model => model.Input.IsSuperAdmin)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Input.IsAdmin)
+                </dt>
+                <dd>
+                    @Html.CheckBoxFor(model => model.Input.IsAdmin)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Input.IsUser)
+                </dt>
+                <dd>
+                    @Html.CheckBoxFor(model => model.Input.IsUser)
+                </dd>
+            
 
             <div class="form-group">
-                <label asp-for="RejupoUser.PasswordHash" class="control-label"></label>
-                <input asp-for="RejupoUser.PasswordHash" class="form-control" />
-                <span asp-validation-for="RejupoUser.PasswordHash" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.SecurityStamp" class="control-label"></label>
-                <input asp-for="RejupoUser.SecurityStamp" class="form-control" />
-                <span asp-validation-for="RejupoUser.SecurityStamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.ConcurrencyStamp" class="control-label"></label>
-                <input asp-for="RejupoUser.ConcurrencyStamp" class="form-control" />
-                <span asp-validation-for="RejupoUser.ConcurrencyStamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RejupoUser.PhoneNumber" class="control-label"></label>
-                <input asp-for="RejupoUser.PhoneNumber" class="form-control" />
-                <span asp-validation-for="RejupoUser.PhoneNumber" class="text-danger"></span>
-            </div>
- 
-
-            <div class="form-group">
-                <label asp-for="RejupoUser.LockoutEnd" class="control-label"></label>
-                <input asp-for="RejupoUser.LockoutEnd" class="form-control" />
-                <span asp-validation-for="RejupoUser.LockoutEnd" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="RejupoUser.AccessFailedCount" class="control-label"></label>
-                <input asp-for="RejupoUser.AccessFailedCount" class="form-control" />
-                <span asp-validation-for="RejupoUser.AccessFailedCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Zapisz" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Powrót do listy</a>
 </div>
 

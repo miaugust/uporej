@@ -1,11 +1,12 @@
 @page
+@namespace Rejupo.Data
 @model Rejupo.Pages_Admin_Users.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista</h2>
 
 
 <table class="table">
@@ -27,6 +28,16 @@
             
             <th>
                 @Html.DisplayNameFor(model => model.RejupoUser[0].PhoneNumber)
+            </th>
+
+            <th>
+                @SD.SuperAdmin
+            </th>
+            <th>
+                @SD.Admin
+            </th>
+            <th>
+                @SD.User
             </th>
 
             <th>
@@ -53,6 +64,15 @@
 
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.CheckBox("id", await Model.UserManager.IsInRoleAsync(item, SD.SuperAdmin), new { disabled = "disabled"})
+            </td>
+            <td>
+                @Html.CheckBox("id", await Model.UserManager.IsInRoleAsync(item, SD.Admin),new { disabled = "disabled"})
+            </td>
+            <td>
+                @Html.CheckBox("id", await Model.UserManager.IsInRoleAsync(item, SD.User),new { disabled = "disabled"})
             </td>
 
             <td>
