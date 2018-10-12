@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Rejupo.Areas.Identity.Data;
 using Rejupo.Data;
@@ -44,6 +46,7 @@ namespace Rejupo.Areas.Identity.Pages.Account
 
         [BindProperty]
         public InputModel Input { get; set; }
+        public SelectList Divisions { get; set; }
 
         public string ReturnUrl { get; set; }
 
@@ -58,6 +61,8 @@ namespace Rejupo.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Oddział")]
             public string Division { get; set; }
+            [Required, Phone, Display(Name = "Telefon")]
+            public string Phone {get; set;}
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -75,9 +80,13 @@ namespace Rejupo.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-        public void OnGet(string returnUrl = null)
+        public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
+            var divisions = await _db.Divisions.Select(d=> d.Abbreviation).ToListAsync();
+            Divisions = new SelectList(divisions);
+            
+
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -91,7 +100,8 @@ namespace Rejupo.Areas.Identity.Pages.Account
                     Email = Input.Email,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Division = Input.Division
+                    Division = Input.Division,
+                    PhoneNumber = Input.Phone
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
@@ -116,6 +126,7 @@ namespace Rejupo.Areas.Identity.Pages.Account
                     
                     
                     _logger.LogInformation("User created a new account with password.");
+                    await LogWriter.WritetoDbAsync(_db, user.UserName, "Rejestracja użytkownika.");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);

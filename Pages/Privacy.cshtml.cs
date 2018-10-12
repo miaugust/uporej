@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Rejupo.Areas.Identity.Data;
+using Rejupo.Data;
 
 namespace Rejupo.Pages
 {
-    
+    [Authorize(Roles = SD.SuperAdmin)]
     public class PrivacyModel : PageModel
     {
         private readonly UserManager<RejupoUser> _userManager;

@@ -2,14 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Rejupo.Data;
 using Rejupo.Models;
 
 namespace Rejupo.Pages_Admin_Divisions
 {
+    [Authorize(Roles = SD.SuperAdmin)]
     public class EditModel : PageModel
     {
         private readonly Rejupo.Models.AppDbContext _context;

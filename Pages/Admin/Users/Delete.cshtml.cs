@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,7 @@ using Rejupo.Models;
 
 namespace Rejupo.Pages_Admin_Users
 {
+    [Authorize(Roles = SD.SuperAdmin)]
     public class DeleteModel : PageModel
     {
         private readonly Rejupo.Models.AppDbContext _context;
@@ -59,7 +61,7 @@ namespace Rejupo.Pages_Admin_Users
             if (RejupoUser != null)
             {
                 await _userManager.DeleteAsync(RejupoUser);
-                await LogWriter.WritetoDbAsync(_context, HttpContext.User.Identity.Name, "Usunięcie użytkownika " + RejupoUser.UserName);
+                await LogWriter.WritetoDbAsync(_context, User.Identity.Name,"Usunięcie użytkownika " + RejupoUser.UserName);
             }
 
             return RedirectToPage("./Index");
