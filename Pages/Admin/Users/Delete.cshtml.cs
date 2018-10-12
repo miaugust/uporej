@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Rejupo.Areas.Identity.Data;
+using Rejupo.Data;
 using Rejupo.Models;
 
 namespace Rejupo.Pages_Admin_Users
@@ -57,8 +59,7 @@ namespace Rejupo.Pages_Admin_Users
             if (RejupoUser != null)
             {
                 await _userManager.DeleteAsync(RejupoUser);
-                // _context.Users.Remove(RejupoUser);
-                // await _context.SaveChangesAsync();
+                await LogWriter.WritetoDbAsync(_context, HttpContext.User.Identity.Name, "Usunięcie użytkownika " + RejupoUser.UserName);
             }
 
             return RedirectToPage("./Index");

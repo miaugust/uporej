@@ -11,8 +11,5 @@ namespace Rejupo.Data
        
         public const string User = "User";
 
-        public SD()
-        {
-        }
     }
 }

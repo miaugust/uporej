@@ -24,5 +24,7 @@ namespace Rejupo.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<Division> Divisions { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        
     }
 }

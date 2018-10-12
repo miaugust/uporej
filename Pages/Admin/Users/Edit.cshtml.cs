@@ -29,7 +29,6 @@ namespace Rejupo.Pages_Admin_Users
             _userManager = userManager;
             Input = new InputModel();
         }
-
         public RejupoUser RejupoUser { get; set; }
         [BindProperty]
         public InputModel Input { get; set; }
@@ -45,7 +44,6 @@ namespace Rejupo.Pages_Admin_Users
             [Display(Name = "Użytkownik")]
             public bool IsUser { get; set; }
         }
-
         public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
@@ -73,7 +71,9 @@ namespace Rejupo.Pages_Admin_Users
             {
                 return Page();
             }
+            
             RejupoUser user = await _userManager.FindByIdAsync(RejupoUserID);
+            
             if (Input.IsAdmin)
                 await _userManager.AddToRoleAsync(user, SD.Admin);
             else
@@ -86,6 +86,9 @@ namespace Rejupo.Pages_Admin_Users
                 await _userManager.AddToRoleAsync(user, SD.SuperAdmin);
             else
                 await _userManager.RemoveFromRoleAsync(user, SD.SuperAdmin);
+
+            await LogWriter.WritetoDbAsync(_context, HttpContext.User.Identity.Name,
+             $"Zmiana ról użytkownika {user.UserName} {SD.SuperAdmin} {Input.IsSuperAdmin} {SD.Admin} {Input.IsAdmin} {SD.User} {Input.IsUser}");
 
             //_context.Attach(RejupoUser).State = EntityState.Modified;
 
