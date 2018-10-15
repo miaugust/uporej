@@ -69,7 +69,7 @@ namespace Rejupo.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "{0} musi mieć przynajmniej {2} znaki.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0} musi posiadać przynajmniej {2} znaków.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Hasło")]
             public string Password { get; set; }
@@ -84,6 +84,8 @@ namespace Rejupo.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
             var divisions = await _db.Divisions.Select(d=> d.Abbreviation).ToListAsync();
+            if(divisions.Count == 0)
+                divisions.Add("--");
             Divisions = new SelectList(divisions);
             
 

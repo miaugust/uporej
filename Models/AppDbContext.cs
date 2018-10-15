@@ -30,6 +30,7 @@ namespace Rejupo.Models
         public DbSet<Log> Logs { get; set; }
         public DbSet<PersonalDataAuthorizationScope> PersonalDataAuthorizationScopes { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<AuthorizationToProcesPersonalDataDocument> AuthorizationToProcesPersonalDataDocuments { get; set; }
 
     }
 }

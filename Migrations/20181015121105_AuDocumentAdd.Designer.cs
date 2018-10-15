@@ -9,8 +9,8 @@ using Rejupo.Models;
 namespace Rejupo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181011065153_Divisions_added")]
-    partial class Divisions_added
+    [Migration("20181015121105_AuDocumentAdd")]
+    partial class AuDocumentAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -204,6 +204,96 @@ namespace Rejupo.Migrations
                     b.ToTable("Divisions");
                 });
 
+            modelBuilder.Entity("Rejupo.Models.Docs.AuthorizationToProcesPersonalDataDocument", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("CancelingDate");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<int>("LastChangedId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("OwnerId");
+
+                    b.Property<DateTime?>("ValidTo");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LastChangedId");
+
+                    b.HasIndex("OwnerId")
+                        .IsUnique();
+
+                    b.ToTable("AuthorizationToProcesPersonalDataDocuments");
+                });
+
+            modelBuilder.Entity("Rejupo.Models.Docs.PersonalDataAuthorization_Document_Scope", b =>
+                {
+                    b.Property<int>("DocumentId");
+
+                    b.Property<int>("ScopeId");
+
+                    b.HasKey("DocumentId", "ScopeId");
+
+                    b.HasIndex("ScopeId");
+
+                    b.ToTable("PersonalDataAuthorization_Document_Scope");
+                });
+
+            modelBuilder.Entity("Rejupo.Models.Docs.PersonalDataAuthorizationScope", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Scope");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PersonalDataAuthorizationScopes");
+                });
+
+            modelBuilder.Entity("Rejupo.Models.Employee", b =>
+                {
+                    b.Property<string>("ControlNumber")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Division");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.HasKey("ControlNumber");
+
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("Rejupo.Models.Log", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logs");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -246,6 +336,31 @@ namespace Rejupo.Migrations
                     b.HasOne("Rejupo.Areas.Identity.Data.RejupoUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Rejupo.Models.Docs.AuthorizationToProcesPersonalDataDocument", b =>
+                {
+                    b.HasOne("Rejupo.Models.Log", "LastChanged")
+                        .WithMany()
+                        .HasForeignKey("LastChangedId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Rejupo.Models.Employee", "Owner")
+                        .WithOne("AuthorizationToProcesPersonalDataDocument")
+                        .HasForeignKey("Rejupo.Models.Docs.AuthorizationToProcesPersonalDataDocument", "OwnerId");
+                });
+
+            modelBuilder.Entity("Rejupo.Models.Docs.PersonalDataAuthorization_Document_Scope", b =>
+                {
+                    b.HasOne("Rejupo.Models.Docs.AuthorizationToProcesPersonalDataDocument", "Document")
+                        .WithMany("PersonalDataAuthorization_Document_Scope")
+                        .HasForeignKey("DocumentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Rejupo.Models.Docs.PersonalDataAuthorizationScope", "Scope")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

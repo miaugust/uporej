@@ -74,3 +74,8 @@ C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\PersonalDataAuthorizationScopes\Create.g.cshtml.cs
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\PersonalDataAuthorizationScopes\Edit.g.cshtml.cs
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\PersonalDataAuthorizationScopes\Index.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Create.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Delete.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Details.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Edit.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Index.g.cshtml.cs

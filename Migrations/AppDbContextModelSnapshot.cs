@@ -226,7 +226,7 @@ namespace Rejupo.Migrations
                     b.HasIndex("OwnerId")
                         .IsUnique();
 
-                    b.ToTable("AuthorizationToProcesPersonalDataDocument");
+                    b.ToTable("AuthorizationToProcesPersonalDataDocuments");
                 });
 
             modelBuilder.Entity("Rejupo.Models.Docs.PersonalDataAuthorization_Document_Scope", b =>
