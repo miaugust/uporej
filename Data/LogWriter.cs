@@ -17,5 +17,10 @@ namespace Rejupo.Data
             await db.Logs.AddAsync(log);
             await db.SaveChangesAsync();
         }
+        public static async Task WritetoDbAsync(AppDbContext db, Log log)
+        {
+            await db.Logs.AddAsync(log);
+            await db.SaveChangesAsync();
+        }
     }
 }

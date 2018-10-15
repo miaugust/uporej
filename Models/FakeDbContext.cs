@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Rejupo.Areas.Identity.Data;
+using Rejupo.Models.Docs;
 
 namespace Rejupo.Models
 {
@@ -26,5 +27,6 @@ namespace Rejupo.Models
         }
         public DbSet<Division> Divisions { get; set; }
         public DbSet<Rejupo.Areas.Identity.Data.RejupoUser> RejupoUser { get; set; }
+        public DbSet<Rejupo.Models.Docs.PersonalDataAuthorizationScope> PersonalDataAuthorizationScope { get; set; }
     }
 }

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rejupo.Models;
 
 namespace Rejupo.Migrations.FakeDb
 {
     [DbContext(typeof(FakeDbContext))]
-    partial class FakeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181015081931_fakeupdate1")]
+    partial class fakeupdate1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
