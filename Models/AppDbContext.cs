@@ -23,11 +23,13 @@ namespace Rejupo.Models
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+            builder.Entity<PersonalDataAuthorization_Document_Scope>()
+                .HasKey(dc => new { dc.DocumentId, dc.ScopeId });
         }
         public DbSet<Division> Divisions { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<PersonalDataAuthorizationScope> PersonalDataAuthorizationScopes { get; set; }
-        //public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
     }
 }
