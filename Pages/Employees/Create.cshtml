@@ -13,9 +13,17 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p class="text-danger">@Model.Message</p>
+            <div class="form-group">
+                <label asp-for="Employee.ControlNumber" class="control-label"></label>
+                <input asp-for="Employee.ControlNumber" class="form-control" />
+                <span asp-validation-for="Employee.ControlNumber" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Employee.Division" class="control-label"></label>
-                <input asp-for="Employee.Division" class="form-control" />
+                <select asp-for="Employee.Division" asp-items="Model.Divisions">
+                    <option value=""></option>
+                </select>
                 <span asp-validation-for="Employee.Division" class="text-danger"></span>
             </div>
             <div class="form-group">

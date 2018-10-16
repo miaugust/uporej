@@ -79,3 +79,8 @@ C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Details.g.cshtml.cs
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Edit.g.cshtml.cs
 C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Employees\Index.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Documents\AuthToProcesPers\Create.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Documents\AuthToProcesPers\Delete.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Documents\AuthToProcesPers\Details.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Documents\AuthToProcesPers\Edit.g.cshtml.cs
+C:\Users\maugustynski\Documents\code\Rejupo\obj\Debug\netcoreapp2.2\Razor\Pages\Documents\AuthToProcesPers\Index.g.cshtml.cs

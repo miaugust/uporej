@@ -11,9 +11,9 @@ namespace Rejupo.Pages_Employees
 {
     public class DeleteModel : PageModel
     {
-        private readonly Rejupo.Models.FakeDbContext _context;
+        private readonly Rejupo.Models.AppDbContext _context;
 
-        public DeleteModel(Rejupo.Models.FakeDbContext context)
+        public DeleteModel(Rejupo.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace Rejupo.Pages_Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employee.FirstOrDefaultAsync(m => m.ControlNumber == id);
+            Employee = await _context.Employees.FirstOrDefaultAsync(m => m.ControlNumber == id);
 
             if (Employee == null)
             {
@@ -44,11 +44,11 @@ namespace Rejupo.Pages_Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employee.FindAsync(id);
+            Employee = await _context.Employees.FindAsync(id);
 
             if (Employee != null)
             {
-                _context.Employee.Remove(Employee);
+                _context.Employees.Remove(Employee);
                 await _context.SaveChangesAsync();
             }
 

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Rejupo.Data;
 using Rejupo.Models;
 
 namespace Rejupo
@@ -34,7 +35,10 @@ namespace Rejupo
                 options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddAuthorization(options =>
+                {
+                    options.AddPolicy(SD.Admin, policy => policy.RequireRole(SD.Admin, SD.SuperAdmin));
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

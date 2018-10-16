@@ -11,9 +11,9 @@ namespace Rejupo.Pages_Employees
 {
     public class DetailsModel : PageModel
     {
-        private readonly Rejupo.Models.FakeDbContext _context;
+        private readonly Rejupo.Models.AppDbContext _context;
 
-        public DetailsModel(Rejupo.Models.FakeDbContext context)
+        public DetailsModel(Rejupo.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -27,7 +27,7 @@ namespace Rejupo.Pages_Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employee.FirstOrDefaultAsync(m => m.ControlNumber == id);
+            Employee = await _context.Employees.FirstOrDefaultAsync(m => m.ControlNumber == id);
 
             if (Employee == null)
             {

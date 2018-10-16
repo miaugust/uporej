@@ -11,9 +11,9 @@ namespace Rejupo.Pages_Employees
 {
     public class IndexModel : PageModel
     {
-        private readonly Rejupo.Models.FakeDbContext _context;
+        private readonly Rejupo.Models.AppDbContext _context;
 
-        public IndexModel(Rejupo.Models.FakeDbContext context)
+        public IndexModel(Rejupo.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace Rejupo.Pages_Employees
 
         public async Task OnGetAsync()
         {
-            Employee = await _context.Employee.ToListAsync();
+            Employee = await _context.Employees.ToListAsync();
         }
     }
 }
