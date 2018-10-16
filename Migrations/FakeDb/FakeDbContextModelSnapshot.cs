@@ -123,7 +123,8 @@ namespace Rejupo.Migrations.FakeDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Scope");
+                    b.Property<string>("Scope")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -135,17 +136,22 @@ namespace Rejupo.Migrations.FakeDb
                     b.Property<string>("ControlNumber")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Division");
+                    b.Property<string>("Division")
+                        .IsRequired();
 
                     b.Property<string>("Email");
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired();
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired();
 
                     b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("Pos_title");
 
                     b.HasKey("ControlNumber");
 

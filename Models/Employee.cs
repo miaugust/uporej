@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Rejupo.Models
 {
     public class Employee
@@ -17,6 +16,8 @@ namespace Rejupo.Models
         public string FirstName { get; set; }
         [Display(Name = "Nazwisko"),Required]
         public string LastName { get; set; }
+        [Display(Name = "Stanowisko")]
+        public string Pos_title { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         [Phone, Display(Name = "Telefon")]

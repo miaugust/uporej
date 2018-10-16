@@ -5,42 +5,48 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>Tworzenie</h2>
 
-<h4>AuthorizationToProcesPersonalDataDocument</h4>
+<h4>Upoważnienie do przetwarzania</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AuthorizationToProcesPersonalDataDocument.Name" class="control-label"></label>
-                <input asp-for="AuthorizationToProcesPersonalDataDocument.Name" class="form-control" />
-                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.Name" class="text-danger"></span>
+                <label asp-for="DocumentInputData.Name" class="control-label"></label>
+                <input asp-for="DocumentInputData.Name" class="form-control" disabled/>
+                <span asp-validation-for="DocumentInputData.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorizationToProcesPersonalDataDocument.OwnerId" class="control-label"></label>
-                <select asp-for="AuthorizationToProcesPersonalDataDocument.OwnerId" class ="form-control" asp-items="ViewBag.OwnerId"></select>
+                <label asp-for="DocumentInputData.OwnerId" class="control-label"></label>
+                <input asp-for="DocumentInputData.OwnerId" class="form-control" disabled/>
+                <span asp-validation-for="DocumentInputData.OwnerId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorizationToProcesPersonalDataDocument.DateCreated" class="control-label"></label>
-                <input asp-for="AuthorizationToProcesPersonalDataDocument.DateCreated" class="form-control" />
-                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.DateCreated" class="text-danger"></span>
+                <label asp-for="DocumentInputData.FirstName" class="control-label"></label>
+                <input asp-for="DocumentInputData.FirstName" class="form-control" disabled />
+                <span asp-validation-for="DocumentInputData.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorizationToProcesPersonalDataDocument.ValidTo" class="control-label"></label>
-                <input asp-for="AuthorizationToProcesPersonalDataDocument.ValidTo" class="form-control" />
-                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.ValidTo" class="text-danger"></span>
+                <label asp-for="DocumentInputData.LastName" class="control-label"></label>
+                <input asp-for="DocumentInputData.LastName" class="form-control" disabled/>
+                <span asp-validation-for="DocumentInputData.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="control-label"></label>
-                <input asp-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="form-control" />
-                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="text-danger"></span>
+                <label asp-for="DocumentInputData.DateCreated" class="control-label"></label>
+                <input asp-for="DocumentInputData.DateCreated" class="form-control" />
+                <span asp-validation-for="DocumentInputData.DateCreated" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorizationToProcesPersonalDataDocument.LastChangedId" class="control-label"></label>
-                <select asp-for="AuthorizationToProcesPersonalDataDocument.LastChangedId" class ="form-control" asp-items="ViewBag.LastChangedId"></select>
+                <label asp-for="DocumentInputData.ValidTo" class="control-label"></label>
+                <input asp-for="DocumentInputData.ValidTo" class="form-control" />
+                <span asp-validation-for="DocumentInputData.ValidTo" class="text-danger"></span>
             </div>
+            <hr/>
+            <h4>Zakres upoważnienia</h4>
+            
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

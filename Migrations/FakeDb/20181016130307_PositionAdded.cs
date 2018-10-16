@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Rejupo.Migrations.FakeDb
 {
-    public partial class AuDocumentAdd : Migration
+    public partial class PositionAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,9 +26,10 @@ namespace Rejupo.Migrations.FakeDb
                 columns: table => new
                 {
                     ControlNumber = table.Column<string>(nullable: false),
-                    Division = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    Division = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: false),
+                    Pos_title = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false)
@@ -59,7 +60,7 @@ namespace Rejupo.Migrations.FakeDb
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Scope = table.Column<string>(nullable: true)
+                    Scope = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
