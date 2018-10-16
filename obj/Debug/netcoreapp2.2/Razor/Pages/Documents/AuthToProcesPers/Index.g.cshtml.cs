@@ -18,8 +18,13 @@ using Rejupo;
 
 #line default
 #line hidden
+#line 2 "C:\Users\maugustynski\Documents\code\Rejupo\Pages\_ViewImports.cshtml"
+using Rejupo.Data;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13dcc2002fa3b3413cd8ca791d729b996b0aeb54", @"/Pages/Documents/AuthToProcesPers/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"01a2427429a31fe7622fa7a8e51438eb78f3747c", @"/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e64bc609ce419053e7dbc2ff21b56745434fa533", @"/Pages/_ViewImports.cshtml")]
     public class Pages_Documents_AuthToProcesPers_Index : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-page", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -61,7 +66,7 @@ using Rejupo;
             WriteLiteral("\r\n<h2>Index</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(138, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb544755", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb544887", async() => {
                 BeginContext(159, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -211,7 +216,7 @@ using Rejupo;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(1905, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb5412076", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb5412208", async() => {
                 BeginContext(1950, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -246,7 +251,7 @@ using Rejupo;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1978, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb5414430", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb5414562", async() => {
                 BeginContext(2026, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -281,7 +286,7 @@ using Rejupo;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(2057, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb5416790", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13dcc2002fa3b3413cd8ca791d729b996b0aeb5416922", async() => {
                 BeginContext(2104, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

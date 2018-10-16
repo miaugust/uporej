@@ -1,15 +1,18 @@
 @page
 @model Rejupo.Pages_Employees.IndexModel
 
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Lista Pracowników</h2>
+@if(User.IsInRole(SD.SuperAdmin) || User.IsInRole(SD.Admin))
+{
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Dodaj pracownika</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -62,9 +65,9 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ControlNumber">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ControlNumber">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ControlNumber">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.ControlNumber">Zmień</a> |
+                <a asp-page="./Details" asp-route-id="@item.ControlNumber">Szczegóły</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ControlNumber">Usuń</a>
             </td>
         </tr>
 }

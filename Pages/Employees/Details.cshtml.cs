@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Rejupo.Models;
+using Rejupo.Models.Docs;
 
 namespace Rejupo.Pages_Employees
 {
@@ -19,6 +20,7 @@ namespace Rejupo.Pages_Employees
         }
 
         public Employee Employee { get; set; }
+        public AuthorizationToProcesPersonalDataDocument AuthorizationDoc { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -33,6 +35,7 @@ namespace Rejupo.Pages_Employees
             {
                 return NotFound();
             }
+            AuthorizationDoc = Employee.AuthorizationToProcesPersonalDataDocument;
             return Page();
         }
     }

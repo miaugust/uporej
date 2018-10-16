@@ -5,10 +5,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Informacje szczegółowe</h2>
 
 <div>
-    <h4>Employee</h4>
+    <h4>@Model.Employee.FirstName @Model.Employee.LastName, nr konrolny: @Model.Employee.ControlNumber</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -49,7 +49,27 @@
         </dd>
     </dl>
 </div>
+<hr/>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Employee.ControlNumber">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <h4>Dokumenty powiązane</h4>
+    @if(@Model.AuthorizationDoc == null)
+    {
+        <p class="text-danger">Brak upoważnienia do przetwarzania.</p>
+        <a asp-page="/Documents/AuthToProcesPers/Create" asp-route-id="@Model.Employee.ControlNumber">Dodaj upoważnienie</a>
+    }
+    else{
+        <p>Upoważnienie do przetwarzania danych</p>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationDoc.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationDoc.Id)
+        </dd>
+    }
+    <br/>
+    <hr/>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Employee.ControlNumber">Zmień</a> |
+    <a asp-page="./Index">Powrót do listy</a>
 </div>
