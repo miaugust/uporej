@@ -25,6 +25,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
         {
             _context = context;
             DocumentInputData = new DocumentInputData();
+            DocumentCheckboxes = new List<DocumentCheckbox>();
         }
 
         public async Task<IActionResult> OnGetAsync(string id)
@@ -41,8 +42,18 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
                 return NotFound();
             }
     
-            DocumentInputData.Scopes = _context.PersonalDataAuthorizationScopes.Select(s => s.Scope).ToList();
-            DocumentInputData.IsScopeSelected = (new bool[DocumentInputData.Scopes.Count]).ToList();
+            var scopes = _context.PersonalDataAuthorizationScopes.ToList();
+            DocumentCheckboxes = new List<DocumentCheckbox>();
+            for (int i = 0; i < scopes.Count; i++)
+            {
+                DocumentCheckboxes.Add(
+                    new DocumentCheckbox(){
+                        Id = scopes[i].Id,
+                        Scope = scopes[i].Scope,
+                        IsSelected = false
+                    }
+                );
+            }
             DocumentInputData.ValidTo = null;
             DocumentInputData.DateCreated = DateTime.Now;
             DocumentInputData.Name = "Upoważnienie do przetwarzania danych";
@@ -54,6 +65,8 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
 
         [BindProperty]
         public DocumentInputData DocumentInputData { get; set; }
+        [BindProperty]
+        public List<DocumentCheckbox> DocumentCheckboxes { get; set; }
         public Employee Employee { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
@@ -62,7 +75,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
             {
                 return Page();
             }
-
+            var x = DocumentInputData;
             //_context.AuthorizationToProcesPersonalDataDocuments.Add(AuthorizationToProcesPersonalDataDocument);
             await _context.SaveChangesAsync();
 
@@ -83,7 +96,12 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
         public DateTime DateCreated { get; set; }
         [DataType(DataType.Date), Display(Name = "Ważne do")]
         public DateTime? ValidTo { get; set; }
-        public List<string> Scopes { get; set; }
-        public List<bool> IsScopeSelected { get; set; }
+        //public List<DocumentCheckbox> DocumentCheckboxes { get; set; }
+    }
+    public class DocumentCheckbox
+    {
+        public int Id { get; set; }
+        public string Scope { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

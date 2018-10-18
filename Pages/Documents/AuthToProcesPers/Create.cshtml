@@ -16,22 +16,22 @@
             <div class="form-group">
                 <label asp-for="DocumentInputData.Name" class="control-label"></label>
                 <input asp-for="DocumentInputData.Name" class="form-control" disabled/>
-                <span asp-validation-for="DocumentInputData.Name" class="text-danger"></span>
+                <input type="hidden" asp-for="DocumentInputData.Name"/>
             </div>
             <div class="form-group">
                 <label asp-for="DocumentInputData.OwnerId" class="control-label"></label>
                 <input asp-for="DocumentInputData.OwnerId" class="form-control" disabled/>
-                <span asp-validation-for="DocumentInputData.OwnerId" class="text-danger"></span>
+                <input type="hidden" asp-for="DocumentInputData.OwnerId"/>
             </div>
             <div class="form-group">
                 <label asp-for="DocumentInputData.FirstName" class="control-label"></label>
                 <input asp-for="DocumentInputData.FirstName" class="form-control" disabled />
-                <span asp-validation-for="DocumentInputData.FirstName" class="text-danger"></span>
+                <input type="hidden" asp-for="DocumentInputData.FirstName"/>
             </div>
             <div class="form-group">
                 <label asp-for="DocumentInputData.LastName" class="control-label"></label>
                 <input asp-for="DocumentInputData.LastName" class="form-control" disabled/>
-                <span asp-validation-for="DocumentInputData.LastName" class="text-danger"></span>
+                <input type="hidden" asp-for="DocumentInputData.LastName"/>
             </div>
             <div class="form-group">
                 <label asp-for="DocumentInputData.DateCreated" class="control-label"></label>
@@ -45,17 +45,25 @@
             </div>
             <hr/>
             <h4>Zakres upoważnienia</h4>
-            
-
+            @for(int i=0; i < Model.DocumentCheckboxes.Count; i++)
+            {
+                <input type="checkbox" asp-for="@Model.DocumentCheckboxes[i].IsSelected"  />
+                <label asp-for="@Model.DocumentCheckboxes[i].IsSelected">@Model.DocumentCheckboxes[i].Scope</label>
+                <input type="hidden" asp-for="@Model.DocumentCheckboxes[i].Id" />
+                <input type="hidden" asp-for="@Model.DocumentCheckboxes[i].Scope" /> 
+                <br/>
+            }
+            <hr/>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Stwórz" class="btn btn-default" />
             </div>
+
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Lista Upoważnień</a>
 </div>
 
 @section Scripts {
