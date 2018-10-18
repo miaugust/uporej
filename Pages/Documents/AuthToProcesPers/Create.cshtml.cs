@@ -41,13 +41,14 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
             {
                 return NotFound();
             }
-    
-            var scopes = _context.PersonalDataAuthorizationScopes.ToList();
+
+            var scopes = _context.AuthorizationScopes.ToList();
             DocumentCheckboxes = new List<DocumentCheckbox>();
             for (int i = 0; i < scopes.Count; i++)
             {
                 DocumentCheckboxes.Add(
-                    new DocumentCheckbox(){
+                    new DocumentCheckbox()
+                    {
                         Id = scopes[i].Id,
                         Scope = scopes[i].Scope,
                         IsSelected = false
@@ -75,8 +76,19 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
             {
                 return Page();
             }
-            var x = DocumentInputData;
-            //_context.AuthorizationToProcesPersonalDataDocuments.Add(AuthorizationToProcesPersonalDataDocument);
+            //Podstawy dokumentu
+            var Document = new DocumentBase()
+            {
+                Name = DocumentInputData.Name,
+                OwnerId = DocumentInputData.OwnerId,
+                DateCreated = DocumentInputData.DateCreated,
+                ValidTo = DocumentInputData.ValidTo
+
+            };
+
+            // zakres upoważnienia
+
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

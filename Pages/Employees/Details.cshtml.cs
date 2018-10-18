@@ -20,7 +20,7 @@ namespace Rejupo.Pages_Employees
         }
 
         public Employee Employee { get; set; }
-        public AuthorizationToProcesPersonalDataDocument AuthorizationDoc { get; set; }
+        public DocumentBase DocumentBase { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -35,7 +35,7 @@ namespace Rejupo.Pages_Employees
             {
                 return NotFound();
             }
-            AuthorizationDoc = Employee.AuthorizationToProcesPersonalDataDocument;
+            DocumentBase = Employee.Document;
             return Page();
         }
     }

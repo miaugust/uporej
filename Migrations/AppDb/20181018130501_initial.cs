@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Rejupo.Migrations
+namespace Rejupo.Migrations.AppDb
 {
-    public partial class AuDocumentAdd : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,6 +51,19 @@ namespace Rejupo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AuthorizationScopes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Scope = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuthorizationScopes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Divisions",
                 columns: table => new
                 {
@@ -69,9 +82,10 @@ namespace Rejupo.Migrations
                 columns: table => new
                 {
                     ControlNumber = table.Column<string>(nullable: false),
-                    Division = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    Division = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: false),
+                    Pos_title = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false)
@@ -94,19 +108,6 @@ namespace Rejupo.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Logs", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PersonalDataAuthorizationScopes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Scope = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PersonalDataAuthorizationScopes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -216,7 +217,7 @@ namespace Rejupo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AuthorizationToProcesPersonalDataDocuments",
+                name: "DocumentBases",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -225,20 +226,13 @@ namespace Rejupo.Migrations
                     OwnerId = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     ValidTo = table.Column<DateTime>(nullable: true),
-                    CancelingDate = table.Column<DateTime>(nullable: true),
-                    LastChangedId = table.Column<int>(nullable: false)
+                    CancelingDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuthorizationToProcesPersonalDataDocuments", x => x.Id);
+                    table.PrimaryKey("PK_DocumentBases", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AuthorizationToProcesPersonalDataDocuments_Logs_LastChangedId",
-                        column: x => x.LastChangedId,
-                        principalTable: "Logs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AuthorizationToProcesPersonalDataDocuments_Employees_OwnerId",
+                        name: "FK_DocumentBases_Employees_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Employees",
                         principalColumn: "ControlNumber",
@@ -246,25 +240,25 @@ namespace Rejupo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonalDataAuthorization_Document_Scope",
+                name: "Document_Scopes",
                 columns: table => new
                 {
-                    DocumentId = table.Column<int>(nullable: false),
-                    ScopeId = table.Column<int>(nullable: false)
+                    DocumentBaseId = table.Column<int>(nullable: false),
+                    AuthorizationScopeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonalDataAuthorization_Document_Scope", x => new { x.DocumentId, x.ScopeId });
+                    table.PrimaryKey("PK_Document_Scopes", x => new { x.DocumentBaseId, x.AuthorizationScopeId });
                     table.ForeignKey(
-                        name: "FK_PersonalDataAuthorization_Document_Scope_AuthorizationToProc~",
-                        column: x => x.DocumentId,
-                        principalTable: "AuthorizationToProcesPersonalDataDocuments",
+                        name: "FK_Document_Scopes_AuthorizationScopes_AuthorizationScopeId",
+                        column: x => x.AuthorizationScopeId,
+                        principalTable: "AuthorizationScopes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PersonalDataAuthorization_Document_Scope_PersonalDataAuthori~",
-                        column: x => x.ScopeId,
-                        principalTable: "PersonalDataAuthorizationScopes",
+                        name: "FK_Document_Scopes_DocumentBases_DocumentBaseId",
+                        column: x => x.DocumentBaseId,
+                        principalTable: "DocumentBases",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -307,20 +301,15 @@ namespace Rejupo.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AuthorizationToProcesPersonalDataDocuments_LastChangedId",
-                table: "AuthorizationToProcesPersonalDataDocuments",
-                column: "LastChangedId");
+                name: "IX_Document_Scopes_AuthorizationScopeId",
+                table: "Document_Scopes",
+                column: "AuthorizationScopeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AuthorizationToProcesPersonalDataDocuments_OwnerId",
-                table: "AuthorizationToProcesPersonalDataDocuments",
+                name: "IX_DocumentBases_OwnerId",
+                table: "DocumentBases",
                 column: "OwnerId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PersonalDataAuthorization_Document_Scope_ScopeId",
-                table: "PersonalDataAuthorization_Document_Scope",
-                column: "ScopeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -344,7 +333,10 @@ namespace Rejupo.Migrations
                 name: "Divisions");
 
             migrationBuilder.DropTable(
-                name: "PersonalDataAuthorization_Document_Scope");
+                name: "Document_Scopes");
+
+            migrationBuilder.DropTable(
+                name: "Logs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -353,13 +345,10 @@ namespace Rejupo.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AuthorizationToProcesPersonalDataDocuments");
+                name: "AuthorizationScopes");
 
             migrationBuilder.DropTable(
-                name: "PersonalDataAuthorizationScopes");
-
-            migrationBuilder.DropTable(
-                name: "Logs");
+                name: "DocumentBases");
 
             migrationBuilder.DropTable(
                 name: "Employees");

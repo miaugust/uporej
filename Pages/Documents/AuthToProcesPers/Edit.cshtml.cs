@@ -21,7 +21,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
         }
 
         [BindProperty]
-        public AuthorizationToProcesPersonalDataDocument AuthorizationToProcesPersonalDataDocument { get; set; }
+        public DocumentBase AuthorizationToProcesPersonalDataDocument { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,8 +30,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
                 return NotFound();
             }
 
-            AuthorizationToProcesPersonalDataDocument = await _context.AuthorizationToProcesPersonalDataDocuments
-                .Include(a => a.LastChanged)
+            AuthorizationToProcesPersonalDataDocument = await _context.DocumentBases
                 .Include(a => a.Owner).FirstOrDefaultAsync(m => m.Id == id);
 
             if (AuthorizationToProcesPersonalDataDocument == null)
@@ -39,7 +38,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
                 return NotFound();
             }
            ViewData["LastChangedId"] = new SelectList(_context.Set<Log>(), "Id", "Id");
-           ViewData["OwnerId"] = new SelectList(_context.Employee, "ControlNumber", "ControlNumber");
+           ViewData["OwnerId"] = new SelectList(_context.Employees, "ControlNumber", "ControlNumber");
             return Page();
         }
 
@@ -73,7 +72,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
 
         private bool AuthorizationToProcesPersonalDataDocumentExists(int id)
         {
-            return _context.AuthorizationToProcesPersonalDataDocuments.Any(e => e.Id == id);
+            return _context.DocumentBases.Any(e => e.Id == id);
         }
     }
 }

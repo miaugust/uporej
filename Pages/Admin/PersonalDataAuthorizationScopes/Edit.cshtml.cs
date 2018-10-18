@@ -22,7 +22,7 @@ namespace Rejupo.Pages_Admin_PersonalDataAuthorizationScopes
         }
 
         [BindProperty]
-        public PersonalDataAuthorizationScope PersonalDataAuthorizationScope { get; set; }
+        public AuthorizationScope PersonalDataAuthorizationScope { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,7 +31,7 @@ namespace Rejupo.Pages_Admin_PersonalDataAuthorizationScopes
                 return NotFound();
             }
 
-            PersonalDataAuthorizationScope = await _context.PersonalDataAuthorizationScopes.FirstOrDefaultAsync(m => m.Id == id);
+            PersonalDataAuthorizationScope = await _context.AuthorizationScopes.FirstOrDefaultAsync(m => m.Id == id);
 
             if (PersonalDataAuthorizationScope == null)
             {
@@ -72,7 +72,7 @@ namespace Rejupo.Pages_Admin_PersonalDataAuthorizationScopes
 
         private bool PersonalDataAuthorizationScopeExists(int id)
         {
-            return _context.PersonalDataAuthorizationScopes.Any(e => e.Id == id);
+            return _context.AuthorizationScopes.Any(e => e.Id == id);
         }
     }
 }

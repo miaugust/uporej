@@ -58,7 +58,7 @@
 <hr/>
 <div>
     <h4>Dokumenty powiązane</h4>
-    @if(@Model.AuthorizationDoc == null)
+    @if(@Model.DocumentBase == null)
     {
         <p class="text-danger">Brak upoważnienia do przetwarzania.</p>
         <a asp-page="/Documents/AuthToProcesPers/Create" asp-route-id="@Model.Employee.ControlNumber">Dodaj upoważnienie</a>
@@ -66,10 +66,10 @@
     else{
         <p>Upoważnienie do przetwarzania danych</p>
         <dt>
-            @Html.DisplayNameFor(model => model.AuthorizationDoc.Id)
+            @Html.DisplayNameFor(model => model.DocumentBase.Id)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.AuthorizationDoc.Id)
+            @Html.DisplayFor(model => model.DocumentBase.Id)
         </dd>
     }
     <br/>

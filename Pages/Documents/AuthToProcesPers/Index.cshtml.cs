@@ -19,13 +19,13 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
             _context = context;
         }
 
-        public IList<AuthorizationToProcesPersonalDataDocument> AuthorizationToProcesPersonalDataDocument { get;set; }
+        public IList<DocumentBase> AuthorizationToProcesPersonalDataDocument { get;set; }
 
         public async Task OnGetAsync()
         {
-            AuthorizationToProcesPersonalDataDocument = await _context.AuthorizationToProcesPersonalDataDocuments
-                .Include(a => a.LastChanged)
+            AuthorizationToProcesPersonalDataDocument = await _context.DocumentBases
                 .Include(a => a.Owner).ToListAsync();
+            var x = AuthorizationToProcesPersonalDataDocument = await _context.DocumentBases.ToListAsync();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Rejupo.Models.Docs
 {
-    public abstract class DocumentBase
+    public class DocumentBase
     {
         [Key]
         public int Id { get; set; }
@@ -18,8 +18,7 @@ namespace Rejupo.Models.Docs
        
         public DateTime? ValidTo { get; set; }
         public DateTime? CancelingDate { get; set; }
-        public Log LastChanged { get; set; }
-        public int LastChangedId { get; set; }
+
     }
 
 }

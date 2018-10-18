@@ -20,20 +20,20 @@ namespace Rejupo.Pages_Admin_PersonalDataAuthorizationScopes
             _context = context;
         }
 
-        public IList<PersonalDataAuthorizationScope> PersonalDataAuthorizationScope { get;set; }
+        public IList<AuthorizationScope> PersonalDataAuthorizationScope { get;set; }
 
         public async Task OnGetAsync()
         {
-            PersonalDataAuthorizationScope = await _context.PersonalDataAuthorizationScopes.ToListAsync();
+            PersonalDataAuthorizationScope = await _context.AuthorizationScopes.ToListAsync();
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
-            var scope = await _context.PersonalDataAuthorizationScopes.FindAsync(id);
+            var scope = await _context.AuthorizationScopes.FindAsync(id);
 
             if (scope != null)
             {
-                _context.PersonalDataAuthorizationScopes.Remove(scope);
+                _context.AuthorizationScopes.Remove(scope);
                 await _context.SaveChangesAsync();
                 await LogWriter.WritetoDbAsync(_context, HttpContext.User.Identity.Name,
                  $"Usunięto zdefiniowany rodzaj upoważnienia, Id: {scope.Id}, Nazwa: {scope.Scope}");

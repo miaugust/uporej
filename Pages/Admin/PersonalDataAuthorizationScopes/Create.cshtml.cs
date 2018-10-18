@@ -26,7 +26,7 @@ namespace Rejupo.Pages_Admin_PersonalDataAuthorizationScopes
         }
 
         [BindProperty]
-        public PersonalDataAuthorizationScope PersonalDataAuthorizationScope { get; set; }
+        public AuthorizationScope PersonalDataAuthorizationScope { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -35,7 +35,7 @@ namespace Rejupo.Pages_Admin_PersonalDataAuthorizationScopes
                 return Page();
             }
 
-            _context.PersonalDataAuthorizationScopes.Add(PersonalDataAuthorizationScope);
+            _context.AuthorizationScopes.Add(PersonalDataAuthorizationScope);
             await _context.SaveChangesAsync();
             await LogWriter.WritetoDbAsync(_context, HttpContext.User.Identity.Name,
                  $"Dodano nowy rodzaj upoważnienia, Id: {PersonalDataAuthorizationScope.Id}, Nazwa: {PersonalDataAuthorizationScope.Scope}");

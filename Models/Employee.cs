@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Rejupo.Models.Docs;
 
 namespace Rejupo.Models
 {
@@ -24,7 +25,7 @@ namespace Rejupo.Models
         public string PhoneNumber { get; set; }
         [Display(Name = "Aktywny")]
         public bool IsActive { get; set; }
-        public Docs.AuthorizationToProcesPersonalDataDocument AuthorizationToProcesPersonalDataDocument  { get; set; }
+        public DocumentBase Document { get; set; }
         
     }
 }

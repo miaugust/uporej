@@ -19,7 +19,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
             _context = context;
         }
 
-        public AuthorizationToProcesPersonalDataDocument AuthorizationToProcesPersonalDataDocument { get; set; }
+        public DocumentBase AuthorizationToProcesPersonalDataDocument { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,8 +28,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
                 return NotFound();
             }
 
-            AuthorizationToProcesPersonalDataDocument = await _context.AuthorizationToProcesPersonalDataDocuments
-                .Include(a => a.LastChanged)
+            AuthorizationToProcesPersonalDataDocument = await _context.DocumentBases
                 .Include(a => a.Owner).FirstOrDefaultAsync(m => m.Id == id);
 
             if (AuthorizationToProcesPersonalDataDocument == null)

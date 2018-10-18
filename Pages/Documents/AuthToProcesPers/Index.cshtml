@@ -25,12 +25,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument[0].ValidTo)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument[0].CancelingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument[0].LastChanged)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -51,9 +46,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CancelingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastChanged.Id)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

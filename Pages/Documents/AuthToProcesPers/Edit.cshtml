@@ -39,11 +39,7 @@
                 <input asp-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="form-control" />
                 <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="AuthorizationToProcesPersonalDataDocument.LastChangedId" class="control-label"></label>
-                <select asp-for="AuthorizationToProcesPersonalDataDocument.LastChangedId" class="form-control" asp-items="ViewBag.LastChangedId"></select>
-                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.LastChangedId" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
