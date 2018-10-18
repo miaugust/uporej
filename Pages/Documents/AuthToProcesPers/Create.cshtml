@@ -1,0 +1,71 @@
+@page
+@model Rejupo.Pages_Documents_AuthToProcesPers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Tworzenie</h2>
+
+<h4>Upoważnienie do przetwarzania</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DocumentInputData.Name" class="control-label"></label>
+                <input asp-for="DocumentInputData.Name" class="form-control" disabled/>
+                <input type="hidden" asp-for="DocumentInputData.Name"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentInputData.OwnerId" class="control-label"></label>
+                <input asp-for="DocumentInputData.OwnerId" class="form-control" disabled/>
+                <input type="hidden" asp-for="DocumentInputData.OwnerId"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentInputData.FirstName" class="control-label"></label>
+                <input asp-for="DocumentInputData.FirstName" class="form-control" disabled />
+                <input type="hidden" asp-for="DocumentInputData.FirstName"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentInputData.LastName" class="control-label"></label>
+                <input asp-for="DocumentInputData.LastName" class="form-control" disabled/>
+                <input type="hidden" asp-for="DocumentInputData.LastName"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentInputData.DateCreated" class="control-label"></label>
+                <input asp-for="DocumentInputData.DateCreated" class="form-control" />
+                <span asp-validation-for="DocumentInputData.DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentInputData.ValidTo" class="control-label"></label>
+                <input asp-for="DocumentInputData.ValidTo" class="form-control" />
+                <span asp-validation-for="DocumentInputData.ValidTo" class="text-danger"></span>
+            </div>
+            <hr/>
+            <h4>Zakres upoważnienia</h4>
+            @for(int i=0; i < Model.DocumentCheckboxes.Count; i++)
+            {
+                <input type="checkbox" asp-for="@Model.DocumentCheckboxes[i].IsSelected"  />
+                <label asp-for="@Model.DocumentCheckboxes[i].IsSelected">@Model.DocumentCheckboxes[i].Scope</label>
+                <input type="hidden" asp-for="@Model.DocumentCheckboxes[i].Id" />
+                <input type="hidden" asp-for="@Model.DocumentCheckboxes[i].Scope" /> 
+                <br/>
+            }
+            <hr/>
+            <div class="form-group">
+                <input type="submit" value="Stwórz" class="btn btn-default" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Lista Upoważnień</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

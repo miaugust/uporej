@@ -1,0 +1,56 @@
+@page
+@model Rejupo.Pages_Admin_Users.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Usuń</h2>
+
+<h3>Czy na pewno chcesz usunąć?</h3>
+<div>
+    <h4>Użytkownik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.Division)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.Division)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RejupoUser.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RejupoUser.PhoneNumber)
+        </dd>
+
+
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="RejupoUserID" />
+        <input type="submit" value="Usuń" class="btn btn-default" /> |
+        <a asp-page="./Index">Powrót do listy</a>
+    </form>
+</div>

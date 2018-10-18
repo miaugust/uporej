@@ -1,0 +1,49 @@
+@page
+@model Rejupo.Pages_Documents_AuthToProcesPers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AuthorizationToProcesPersonalDataDocument</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationToProcesPersonalDataDocument.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument.Owner)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationToProcesPersonalDataDocument.Owner.ControlNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationToProcesPersonalDataDocument.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument.ValidTo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationToProcesPersonalDataDocument.ValidTo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationToProcesPersonalDataDocument.CancelingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationToProcesPersonalDataDocument.CancelingDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.AuthorizationToProcesPersonalDataDocument.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

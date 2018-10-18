@@ -1,0 +1,56 @@
+@page
+@model Rejupo.Pages_Documents_AuthToProcesPers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>AuthorizationToProcesPersonalDataDocument</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AuthorizationToProcesPersonalDataDocument.Id" />
+            <div class="form-group">
+                <label asp-for="AuthorizationToProcesPersonalDataDocument.Name" class="control-label"></label>
+                <input asp-for="AuthorizationToProcesPersonalDataDocument.Name" class="form-control" />
+                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorizationToProcesPersonalDataDocument.OwnerId" class="control-label"></label>
+                <select asp-for="AuthorizationToProcesPersonalDataDocument.OwnerId" class="form-control" asp-items="ViewBag.OwnerId"></select>
+                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.OwnerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorizationToProcesPersonalDataDocument.DateCreated" class="control-label"></label>
+                <input asp-for="AuthorizationToProcesPersonalDataDocument.DateCreated" class="form-control" />
+                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorizationToProcesPersonalDataDocument.ValidTo" class="control-label"></label>
+                <input asp-for="AuthorizationToProcesPersonalDataDocument.ValidTo" class="form-control" />
+                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.ValidTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="control-label"></label>
+                <input asp-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="form-control" />
+                <span asp-validation-for="AuthorizationToProcesPersonalDataDocument.CancelingDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

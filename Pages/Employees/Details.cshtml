@@ -1,0 +1,81 @@
+@page
+@model Rejupo.Pages_Employees.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Informacje szczegółowe</h2>
+
+<div>
+    <h4>@Model.Employee.FirstName @Model.Employee.LastName, nr konrolny: @Model.Employee.ControlNumber</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Division)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Division)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Pos_title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Pos_title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.IsActive)
+        </dd>
+    </dl>
+</div>
+<hr/>
+<div>
+    <h4>Dokumenty powiązane</h4>
+    @if(@Model.DocumentBase == null)
+    {
+        <p class="text-danger">Brak upoważnienia do przetwarzania.</p>
+        <a asp-page="/Documents/AuthToProcesPers/Create" asp-route-id="@Model.Employee.ControlNumber">Dodaj upoważnienie</a>
+    }
+    else{
+        <p>Upoważnienie do przetwarzania danych</p>
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentBase.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DocumentBase.Id)
+        </dd>
+    }
+    <br/>
+    <hr/>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Employee.ControlNumber">Zmień</a> |
+    <a asp-page="./Index">Powrót do listy</a>
+</div>

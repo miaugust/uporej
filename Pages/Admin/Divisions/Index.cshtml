@@ -1,0 +1,47 @@
+@page
+@model Rejupo.Pages_Admin_Divisions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Lista</h2>
+
+<p>
+    <a asp-page="Create">Utwórz nowy</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Division[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Division[0].Abbreviation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Division[0].Descritption)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Division) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abbreviation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descritption)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edycja</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Usunięcie</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
