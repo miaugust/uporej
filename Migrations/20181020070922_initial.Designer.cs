@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rejupo.Models;
 
-namespace Rejupo.Migrations.AppDb
+namespace Rejupo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181018130501_initial")]
+    [Migration("20181020070922_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -343,12 +343,12 @@ namespace Rejupo.Migrations.AppDb
             modelBuilder.Entity("Rejupo.Models.Docs.Document_Scope", b =>
                 {
                     b.HasOne("Rejupo.Models.Docs.AuthorizationScope", "AuthorizationScope")
-                        .WithMany()
+                        .WithMany("Document_Scope")
                         .HasForeignKey("AuthorizationScopeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Rejupo.Models.Docs.DocumentBase", "DocumentBase")
-                        .WithMany()
+                        .WithMany("Document_Scope")
                         .HasForeignKey("DocumentBaseId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

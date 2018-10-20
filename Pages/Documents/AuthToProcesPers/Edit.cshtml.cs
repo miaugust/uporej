@@ -13,9 +13,9 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
 {
     public class EditModel : PageModel
     {
-        private readonly Rejupo.Models.FakeDbContext _context;
+        private readonly Rejupo.Models.AppDbContext _context;
 
-        public EditModel(Rejupo.Models.FakeDbContext context)
+        public EditModel(Rejupo.Models.AppDbContext context)
         {
             _context = context;
         }

@@ -12,9 +12,9 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
 {
     public class DeleteModel : PageModel
     {
-        private readonly Rejupo.Models.FakeDbContext _context;
+        private readonly Rejupo.Models.AppDbContext _context;
 
-        public DeleteModel(Rejupo.Models.FakeDbContext context)
+        public DeleteModel(Rejupo.Models.AppDbContext context)
         {
             _context = context;
         }

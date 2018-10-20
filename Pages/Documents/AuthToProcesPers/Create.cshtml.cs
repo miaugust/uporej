@@ -43,7 +43,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
             }
 
             var scopes = _context.AuthorizationScopes.ToList();
-            DocumentCheckboxes = new List<DocumentCheckbox>();
+
             for (int i = 0; i < scopes.Count; i++)
             {
                 DocumentCheckboxes.Add(
@@ -68,6 +68,7 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
         public DocumentInputData DocumentInputData { get; set; }
         [BindProperty]
         public List<DocumentCheckbox> DocumentCheckboxes { get; set; }
+
         public Employee Employee { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
@@ -85,10 +86,28 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
                 ValidTo = DocumentInputData.ValidTo
 
             };
+            List<Document_Scope> Document_Scopes = new List<Document_Scope>();
+            List<AuthorizationScope> AuthorizationScopes = await _context.AuthorizationScopes.ToListAsync();
+            // dodanie zakresu upoważnień do dokumentu
+            foreach (var checkbox in DocumentCheckboxes)
+            {
+                if (checkbox.IsSelected)
+                {
+                    Document_Scopes.Add(
+                        new Document_Scope
+                        {
+                            DocumentBase = Document,
+                            AuthorizationScope = AuthorizationScopes.FirstOrDefault(s => s.Id == checkbox.Id)
+                        });
+                }
+            }
+            Document.Document_Scope = Document_Scopes;
 
-            // zakres upoważnienia
+            // dodanie własiciela
+            Document.OwnerId = DocumentInputData.OwnerId;
+            // 
 
-
+            await _context.DocumentBases.AddAsync(Document);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

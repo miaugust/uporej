@@ -12,20 +12,18 @@ namespace Rejupo.Pages_Documents_AuthToProcesPers
 {
     public class IndexModel : PageModel
     {
-        private readonly Rejupo.Models.FakeDbContext _context;
+        private readonly Rejupo.Models.AppDbContext _context;
 
-        public IndexModel(Rejupo.Models.FakeDbContext context)
+        public IndexModel(Rejupo.Models.AppDbContext context)
         {
             _context = context;
         }
 
         public IList<DocumentBase> AuthorizationToProcesPersonalDataDocument { get;set; }
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
-            AuthorizationToProcesPersonalDataDocument = await _context.DocumentBases
-                .Include(a => a.Owner).ToListAsync();
-            var x = AuthorizationToProcesPersonalDataDocument = await _context.DocumentBases.ToListAsync();
+            AuthorizationToProcesPersonalDataDocument = _context.DocumentBases.ToList();
         }
     }
 }

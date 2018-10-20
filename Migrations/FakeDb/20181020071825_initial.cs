@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Rejupo.Migrations
+namespace Rejupo.Migrations.FakeDb
 {
     public partial class initial : Migration
     {

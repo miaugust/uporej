@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Rejupo.Migrations.AppDb
+namespace Rejupo.Migrations
 {
     public partial class initial : Migration
     {

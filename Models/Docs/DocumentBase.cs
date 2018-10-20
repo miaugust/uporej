@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Rejupo.Models.Docs
@@ -18,6 +19,7 @@ namespace Rejupo.Models.Docs
        
         public DateTime? ValidTo { get; set; }
         public DateTime? CancelingDate { get; set; }
+        public List<Document_Scope> Document_Scope { get; set; }
 
     }
 

@@ -29,7 +29,8 @@ namespace Rejupo.Pages_Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employees.FirstOrDefaultAsync(m => m.ControlNumber == id);
+            Employee = await _context.Employees.Include(e => e.Document).
+            FirstOrDefaultAsync(m => m.ControlNumber == id);
 
             if (Employee == null)
             {

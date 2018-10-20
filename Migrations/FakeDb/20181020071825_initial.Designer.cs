@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rejupo.Models;
 
-namespace Rejupo.Migrations
+namespace Rejupo.Migrations.FakeDb
 {
     [DbContext(typeof(FakeDbContext))]
-    partial class FakeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181020071825_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,12 +127,12 @@ namespace Rejupo.Migrations
             modelBuilder.Entity("Rejupo.Models.Docs.Document_Scope", b =>
                 {
                     b.HasOne("Rejupo.Models.Docs.AuthorizationScope", "AuthorizationScope")
-                        .WithMany()
+                        .WithMany("Document_Scope")
                         .HasForeignKey("AuthorizationScopeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Rejupo.Models.Docs.DocumentBase", "DocumentBase")
-                        .WithMany()
+                        .WithMany("Document_Scope")
                         .HasForeignKey("DocumentBaseId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
