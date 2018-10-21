@@ -13,11 +13,15 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Employee.ControlNumber" />
+            <div class="form-group">
+                <label asp-for="Employee.ControlNumber" class="control-label"></label>
+                <input asp-for="Employee.ControlNumber" class="form-control" disabled/>
+                <input type="hidden" asp-for="Employee.ControlNumber" />
+            </div>
             <div class="form-group">
                 <label asp-for="Employee.Division" class="control-label"></label>
-                <input asp-for="Employee.Division" class="form-control" />
-                <span asp-validation-for="Employee.Division" class="text-danger"></span>
+                <input asp-for="Employee.Division" class="form-control" disabled/>
+                <input type="hidden" asp-for="Employee.Division"/>
             </div>
             <div class="form-group">
                 <label asp-for="Employee.FirstName" class="control-label"></label>
@@ -65,7 +69,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Powrót do listy</a>
 </div>
 
 @section Scripts {

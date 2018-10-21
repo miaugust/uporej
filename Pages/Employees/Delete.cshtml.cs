@@ -54,6 +54,10 @@ namespace Rejupo.Pages_Employees
 
             if (Employee != null)
             {
+                if (Employee.Document != null)
+                {
+                    _context.DocumentBases.Remove(Employee.Document);
+                }
                 _context.Employees.Remove(Employee);
                 await _context.SaveChangesAsync();
             }

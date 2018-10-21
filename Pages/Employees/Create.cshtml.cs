@@ -60,8 +60,7 @@ namespace Rejupo.Pages_Employees
             _context.Employees.Add(Employee);
             await _context.SaveChangesAsync();
             await LogWriter.WritetoDbAsync(_context, User.Identity.Name, $"Dodany pracownik, Nr kontrolny: {Employee.ControlNumber}");
-
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new {id=Employee.ControlNumber});
         }
     }
 }

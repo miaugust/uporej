@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
+using Rejupo.Models;
 namespace Rejupo.Models.Docs
 {
     public class DocumentBase
@@ -10,8 +11,8 @@ namespace Rejupo.Models.Docs
         public int Id { get; set; }
         [Display(Name = "Nazwa dokumentu")]
         public string Name { get; set; }
-
         public Employee Owner { get; set; }
+        [ForeignKey("Employee")]
         [Display(Name = "Nr kontrolny osoby powiązanej")]
         public string OwnerId { get; set; }
         [DataType(DataType.Date), Display(Name = "Data utworzenia")]
