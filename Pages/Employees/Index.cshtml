@@ -29,6 +29,9 @@
                 @Html.DisplayNameFor(model => model.Employee[0].LastName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Pos_title)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Employee[0].Email)
             </th>
             <th>
@@ -56,6 +59,9 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Pos_title)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
@@ -65,7 +71,7 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ControlNumber">Zmień</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ControlNumber">Edytuj</a> |
                 <a asp-page="./Details" asp-route-id="@item.ControlNumber">Szczegóły</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ControlNumber">Usuń</a>
             </td>

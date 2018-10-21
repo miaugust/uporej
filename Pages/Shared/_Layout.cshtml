@@ -30,7 +30,6 @@
                 }
                 <a class="navbar-brand" asp-area="" asp-page="/Employees/Index">Pracownicy</a>
                 <a class="navbar-brand" asp-area="" asp-page="/Documents/AuthToProcesPers/Index">Dokumenty</a>
-                <a class="navbar-brand" asp-area="" asp-page="/Privacy">Privacy</a>
                 <partial name="_LoginPartial" />
             </div>
         </nav>
@@ -52,6 +51,7 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/AdminMenu.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -67,6 +67,7 @@
                 integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/AdminMenu.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)
